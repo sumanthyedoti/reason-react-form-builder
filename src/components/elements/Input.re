@@ -4,7 +4,8 @@ module Styles = {
     style([
       padding2(~v=em(0.4), ~h=em(1.)),
       border(px(0), `none, transparent),
-      borderBottom(px(1), `solid, hex("aaa")) //#aaa
+      borderBottom(px(1), `solid, hex("aaa")), //#aaa
+      width(`percent(100.)),
     ]);
 };
 
