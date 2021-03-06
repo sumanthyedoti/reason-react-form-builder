@@ -1,4 +1,5 @@
 open Css;
+open Mixins;
 
 let form_buttons_c_height = 50;
 
@@ -20,7 +21,7 @@ let form =
     height(`percent(100.)),
     overflow(`scroll),
     marginBottom(`auto),
-    border(px(1), `solid, red)
+    paddingRight(`rem(1.)),
   ]);
 
 let inputEntry =
@@ -29,16 +30,25 @@ let inputEntry =
     (100, [opacity(1.0), transform(scale3d(1., 1., 1.))]),
   ]);
 
+let inputContainer =
+  merge([flex_start_center, style([
+    padding2(~v=`rem(1.), ~h=`rem(0.4)),
+    borderBottom(`px(1), `dotted, lightgray),
+    selector("&:last-child", [
+      borderBottom(`px(0), `none, transparent),
+    ])
+  ])]);
+
 let input =
   style([
     animationName(inputEntry),
     animationDuration(300),
     transformOrigin(`percent(10.0), px(0)),
-    paddingTop(`em(0.5)),
-    paddingBottom(`em(0.5)),
+    padding2(~v=`rem(0.5), ~h=`rem(1.)),
+    width(`percent(100.)),
     animationTimingFunction(cubicBezier(0.16, 1., 0.3, 1.)),
   ]);
-let inputItem = Css.merge([input, Mixins.flex_col_start_start]);
+
 let formButtonsContainer =
   style([
     position(`absolute),

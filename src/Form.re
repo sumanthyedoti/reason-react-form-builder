@@ -1,3 +1,9 @@
+type element;
+[@bs.val] [@bs.scope "document"]
+external getElementById: string => 'a = "getElementById";
+[@bs.module "./Js/scrollDivToBottom"] [@bs.val]
+external scrollDivToBottom: string => unit = "";
+
 open Css;
 open AppStyle;
 open Mixins;
@@ -24,7 +30,11 @@ module DeleteButton = {
 [@react.component]
 let make = () => {
   let ({form}, dispatch) = React.useContext(FormContext.context);
-  let scrollFormToBottom = () => ();
+  let scrollFormToBottom = () => {
+    // let elem = getElementById("form");
+    // elem##scrollTop = elem##scrollHeight;
+    scrollDivToBottom("form");
+  };
   <div className=formContainer>
     <form id="form" className=AppStyle.form>
       {
@@ -33,19 +43,22 @@ let make = () => {
              switch (item) {
              | Text(input) =>
                <div
-                 className={merge([flex_start_center, AppStyle.input])}
-                 key={Js.Float.toString(input.id)}>
-                 <span> {string_of_int(i + 1) |> React.string} </span>
-                 <Input.Text
-                   onChange=(
-                     event => {
-                       let value = ReactEvent.Form.target(event)##value;
-                       dispatch(AddText(input.id, value));
-                       ();
-                     }
-                   )
-                   value={input.text}
-                 />
+                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 <span className=align_self_start>
+                   {string_of_int(i + 1) |> React.string}
+                 </span>
+                 <div className=AppStyle.input>
+                   <Input.Text
+                     onChange=(
+                       event => {
+                         let value = ReactEvent.Form.target(event)##value;
+                         dispatch(AddText(input.id, value));
+                         ();
+                       }
+                     )
+                     value={input.text}
+                   />
+                 </div>
                  <DeleteButton
                    onClick=(
                      _ => {
@@ -57,10 +70,15 @@ let make = () => {
                </div>
              | Range(input, rangeValue, scaleStart) =>
                <div
-                 className=flex_start_center
-                 key={Js.Float.toString(input.id)}>
-                 <span> {string_of_int(i + 1) |> React.string} </span>
-                 <div className=inputItem key={Js.Float.toString(input.id)}>
+                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 <span className=align_self_start>
+                   {string_of_int(i + 1) |> React.string}
+                 </span>
+                 <div
+                   className={
+                     merge([AppStyle.input, Mixins.flex_col_start_start])
+                   }
+                   key={Js.Float.toString(input.id)}>
                    <Input.Text
                      onChange=(
                        event => {
@@ -71,7 +89,13 @@ let make = () => {
                      )
                      value={input.text}
                    />
-                   <div className=flex_start_center>
+                   <div
+                     className={
+                       merge([
+                         flex_start_center,
+                         style([paddingTop(`rem(1.))]),
+                       ])
+                     }>
                      <Input.Range
                        min="2"
                        max="11"
@@ -125,15 +149,22 @@ let make = () => {
       }
     </form>
     <div className="">
-      <button onClick={_ => dispatch(AddInput(Text(makeInput("Hello"))))}>
+      <button
+        onClick={
+          _ => {
+            scrollFormToBottom();
+            dispatch(AddInput(Text(makeInput("Hello"))));
+          }
+        }>
         {"Add Text" |> str}
       </button>
       <button
         onClick={
-                  scrollFormToBottom();
-                  _ =>
-                    dispatch(AddInput(Range(makeInput("Scale"), 6, One)));
-                }>
+          _ => {
+            scrollFormToBottom();
+            dispatch(AddInput(Range(makeInput("Scale"), 6, One)));
+          }
+        }>
         {"Add Scale" |> str}
       </button>
     </div>
