@@ -62,7 +62,7 @@ let make = () => {
     React.useReducer(reducer, FormContext.initialState);
   // let context =
   //   React.useMemo2(() => (state.form, dispatch), (state.form, dispatch));
-  <FormContext.Provider value=(state, dispatch)>
+  <FormContext.Provider value=(state, dispatch)>  
     <App />
   </FormContext.Provider>;
 };

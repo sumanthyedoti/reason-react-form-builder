@@ -29,3 +29,10 @@ let flex_col_start_center =
     justifyContent(`flexStart),
     alignItems(`center),
   ]);
+let flex_col_between_center =
+  style([
+    display(`flex),
+    flexDirection(`column),
+    justifyContent(`spaceBetween),
+    alignItems(`center),
+  ]);
