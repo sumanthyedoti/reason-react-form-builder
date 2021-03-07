@@ -4,17 +4,25 @@ type scaleStart =
   | One;
 type inputItem = {
   id: float,
-  text: string,
+  question: string,
+  answer: string,
 };
 type input =
   | Text(inputItem)
   | Range(inputItem, rangeValue, scaleStart);
 
-type state = {form: list(input)};
-
+type inputAction =
+  | None
+  | Update
+  | Add
+  | Delete;
 type action =
   | AddInput(input)
   | AddText(float, string)
   | ChangeRange(float, string)
   | ChangeScaleStart(float, scaleStart)
   | DeleteInput(float);
+type state = {
+  action: inputAction,
+  form: list(input),
+};

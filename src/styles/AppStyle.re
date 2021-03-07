@@ -43,7 +43,7 @@ let inputEntry =
 let input =
   style([
     animationName(inputEntry),
-    animationDuration(400),
+    animationDuration(500),
     animationTimingFunction(cubicBezier(0.16, 1., 0.3, 1.)),
     transformOrigin(`percent(10.0), px(0)),
     padding2(~v=`rem(1.), ~h=`rem(1.)),

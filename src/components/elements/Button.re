@@ -31,7 +31,7 @@ let make = (~onClick, ~icon=?, ~text: string) =>
     {
       switch (icon) {
       | Some(icon) =>
-        <span style={ReactDOM.Style.make(~paddingRight="0.6em", ~maxHeight="3rem", ())}>
+        <span style={ReactDOM.Style.make(~paddingRight="1em", ~maxHeight="3rem", ())}>
           {icon()}
         </span>
       | None => React.null

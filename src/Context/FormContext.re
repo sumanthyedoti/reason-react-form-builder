@@ -1,6 +1,6 @@
 open FormTypes;
 
-let initialState = {form: []};
+let initialState = {action: None, form: []};
 
 type dispatch = action => unit;
 type contextValue = (state, dispatch);

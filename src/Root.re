@@ -1,24 +1,26 @@
 open FormTypes;
 
-let reducer = (state, action) =>
+let formReducer = (state, action) =>
   switch (action) {
-  | AddInput(input) => {form: state.form @ [input]}
-  | AddText(id, text) => {
+  | AddInput(input) => {action: Add, form: state.form @ [input]}
+  | AddText(id, question) => {
+      action: Update,
       form:
         state.form
         |> List.map(item =>
              switch (item) {
              | Text(inputItem) =>
                inputItem.id == id ?
-                 Text({...inputItem, text}) : Text(inputItem)
+                 Text({...inputItem, question}) : Text(inputItem)
              | Range(inputItem, rangeValue, scaleStart) =>
                inputItem.id == id ?
-                 Range({...inputItem, text}, rangeValue, scaleStart) :
+                 Range({...inputItem, question}, rangeValue, scaleStart) :
                  Range(inputItem, rangeValue, scaleStart)
              }
            ),
     }
   | ChangeRange(id, value) => {
+      action: Update,
       form:
         state.form
         |> List.map(item =>
@@ -32,6 +34,7 @@ let reducer = (state, action) =>
            ),
     }
   | ChangeScaleStart(id, scaleStartPosition) => {
+      action: Update,
       form:
         state.form
         |> List.map(item =>
@@ -45,6 +48,7 @@ let reducer = (state, action) =>
            ),
     }
   | DeleteInput(id) => {
+      action: Delete,
       form:
         state.form
         |> List.filter(item =>
@@ -59,7 +63,7 @@ let reducer = (state, action) =>
 [@react.component]
 let make = () => {
   let (state, dispatch) =
-    React.useReducer(reducer, FormContext.initialState);
+    React.useReducer(formReducer, FormContext.initialState);
   // let context =
   //   React.useMemo2(() => (state.form, dispatch), (state.form, dispatch));
   <FormContext.Provider value=(state, dispatch)>  

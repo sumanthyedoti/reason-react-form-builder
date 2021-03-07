@@ -1,15 +1,15 @@
-type element;
-[@bs.val] [@bs.scope "document"]
-external getElementById: string => 'a = "getElementById";
-[@bs.module "./Js/scrollDivToBottom"] [@bs.val]
-external scrollDivToBottom: string => unit = "";
+open Webapi.Dom;
 
 open Css;
 open AppStyle;
 open Mixins;
 open FormTypes;
 
-let makeInput = text: inputItem => {id: Js.Date.now(), text};
+let makeInput = question: inputItem => {
+  id: Js.Date.now(),
+  question,
+  answer: "",
+};
 let str = React.string;
 
 module DeleteButton = {
@@ -48,18 +48,20 @@ module InputNumber = {
 
 [@react.component]
 let make = () => {
-  let ({form}, dispatch) = React.useContext(FormContext.context);
+  let (state, dispatch) = React.useContext(FormContext.context);
   React.useEffect1(
     () => {
-      scrollDivToBottom("form");
+      if (state.action == Add) {
+        DomAPI.scrollToBottom(~qs="#form");
+      };
       None;
     },
-    [|form|],
+    [|state.form|],
   );
   <div className=formContainer>
     <form id="form" className=AppStyle.form>
       {
-        form
+        state.form
         |> List.mapi((i, item) =>
              switch (item) {
              | Text(input) =>
@@ -76,7 +78,7 @@ let make = () => {
                          ();
                        }
                      )
-                     value={input.text}
+                     value={input.question}
                    />
                  </div>
                  <DeleteButton
@@ -106,7 +108,7 @@ let make = () => {
                          ();
                        }
                      )
-                     value={input.text}
+                     value={input.question}
                    />
                    <div
                      className={
@@ -173,12 +175,12 @@ let make = () => {
       <div className=Mixins.flex_start_center>
         <Button
           onClick={_ => dispatch(AddInput(Text(makeInput(""))))}
-          text="Add Text"
+          text="Text"
           icon={() => <Icons.Text />}
         />
         <Button
           icon={() => <Icons.Scale />}
-          text="Add Scale"
+          text="Scale"
           onClick={_ => dispatch(AddInput(Range(makeInput(""), 6, One)))}
         />
       </div>
