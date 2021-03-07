@@ -12,6 +12,7 @@ let formContainer =
       height(`vh(100.)),
       width(`vw(40.)),
       flexGrow(0.),
+      background(`hex(Palette.formBG)),
     ]),
   ]);
 
@@ -19,9 +20,18 @@ let form =
   style([
     width(`percent(100.)),
     height(`percent(100.)),
-    overflow(`scroll),
-    marginBottom(`auto),
-    paddingRight(`rem(1.)),
+    overflow(`auto),
+    padding2(~v=`rem(0.8), ~h=rem(1.)),
+  ]);
+
+let inputContainer =
+  merge([
+    flex_start_center,
+    style([
+      padding2(~v=`rem(3.), ~h=`rem(1.)),
+      borderBottom(`px(2), `dotted, lightgray),
+      selector("&:last-child", [borderBottom(`px(0), `none, transparent)]),
+    ]),
   ]);
 
 let inputEntry =
@@ -30,28 +40,22 @@ let inputEntry =
     (100, [opacity(1.0), transform(scale3d(1., 1., 1.))]),
   ]);
 
-let inputContainer =
-  merge([flex_start_center, style([
-    padding2(~v=`rem(1.), ~h=`rem(0.4)),
-    borderBottom(`px(1), `dotted, lightgray),
-    selector("&:last-child", [
-      borderBottom(`px(0), `none, transparent),
-    ])
-  ])]);
-
 let input =
   style([
     animationName(inputEntry),
-    animationDuration(300),
-    transformOrigin(`percent(10.0), px(0)),
-    padding2(~v=`rem(0.5), ~h=`rem(1.)),
-    width(`percent(100.)),
+    animationDuration(400),
     animationTimingFunction(cubicBezier(0.16, 1., 0.3, 1.)),
+    transformOrigin(`percent(10.0), px(0)),
+    padding2(~v=`rem(1.), ~h=`rem(1.)),
+    width(`percent(100.)),
   ]);
 
-let formButtonsContainer =
+let formButtonsContainer = style([position(`absolute), bottom(`zero)]);
+
+let buttonContainer =
   style([
-    position(`absolute),
-    bottom(`zero),
-    // height(`px(form_buttons_c_height)),
+    width(`percent(100.)),
+    padding2(~v=em(1.2), ~h=em(2.)),
+    borderTop(`px(4), `solid, white),
+    margin2(~v=`rem(1.), ~h=`rem(1.)),
   ]);

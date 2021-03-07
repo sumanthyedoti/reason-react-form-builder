@@ -1,6 +1,5 @@
 open Css;
 open AppStyle;
-open Mixins;
 open FormTypes;
 
 let makeInput = text: inputItem => {id: Js.Date.now(), text};
