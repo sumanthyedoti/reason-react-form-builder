@@ -3,7 +3,6 @@ open Mixins;
 
 let form_buttons_c_height = 50;
 
-let container = Css.merge([Mixins.flex_start_start]);
 let formContainer =
   Css.merge([
     Mixins.flex_col_between_center,
@@ -12,7 +11,7 @@ let formContainer =
       height(`vh(100.)),
       width(`vw(40.)),
       flexGrow(0.),
-      background(`hex(Palette.formBG)),
+      background(`hex(Palette.bgSecondary)),
     ]),
   ]);
 
@@ -56,6 +55,6 @@ let buttonContainer =
   style([
     width(`percent(100.)),
     padding2(~v=em(1.2), ~h=em(2.)),
-    borderTop(`px(4), `solid, white),
+    borderTop(`px(2), `solid, lightgray),
     margin2(~v=`rem(1.), ~h=`rem(1.)),
   ]);

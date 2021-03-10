@@ -1,11 +1,11 @@
 open Css;
-open AppStyle;
-open FormTypes;
 
 [@react.component]
-let make = () => {
-  let ({form}, dispatch) = React.useContext(FormContext.context);
-  <main className=container>
-    <Form />
+let make = () =>
+  <main
+    className={
+      merge([Mixins.flex_start_stretch, style([height(`vh(100.))])])
+    }>
+    <FormBuilder />
+    <FormPreview />
   </main>;
-};

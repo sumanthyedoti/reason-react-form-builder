@@ -19,7 +19,7 @@ module Styles = {
         selector("&:last-child", [marginRight(`em(0.))]),
         selector(
           "&:hover, &:focus",
-          [backgroundColor(`hex(Palette.buttonHover))],
+          [backgroundColor(`hex(Palette.fgPrimary_hover))],
         ),
       ]),
     ]);
@@ -31,7 +31,10 @@ let make = (~onClick, ~icon=?, ~text: string) =>
     {
       switch (icon) {
       | Some(icon) =>
-        <span style={ReactDOM.Style.make(~paddingRight="1em", ~maxHeight="3rem", ())}>
+        <span
+          style={
+            ReactDOM.Style.make(~paddingRight="1em", ~maxHeight="3rem", ())
+          }>
           {icon()}
         </span>
       | None => React.null

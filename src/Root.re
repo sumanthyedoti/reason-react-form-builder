@@ -27,7 +27,7 @@ let formReducer = (state, action) =>
              switch (item) {
              | Range(inputItem, rangeValue, scaleStart) =>
                inputItem.id == id ?
-                 Range(inputItem, int_of_string(value), scaleStart) :
+                 Range({...inputItem, answer: ""}, int_of_string(value), scaleStart) :
                  Range(inputItem, rangeValue, scaleStart)
              | _ => item
              }
@@ -57,6 +57,20 @@ let formReducer = (state, action) =>
              | Range(inputItem, _, _) => inputItem.id != id
              }
            ),
+    }
+  | Answer(id, answer) => {
+      action: Update,
+      form: state.form |> List.map(item =>
+      switch (item) {
+      | Text(inputItem) =>
+        inputItem.id == id ?
+          Text({...inputItem, answer}) : Text(inputItem)
+      | Range(inputItem, rangeValue, scaleStart) =>
+        inputItem.id == id ?
+          Range({...inputItem, answer}, rangeValue, scaleStart) :
+          Range(inputItem, rangeValue, scaleStart)
+      }
+    ),
     }
   };
 

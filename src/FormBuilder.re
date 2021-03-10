@@ -1,7 +1,5 @@
-open Webapi.Dom;
-
 open Css;
-open AppStyle;
+open Styles.FormBuilder;
 open Mixins;
 open FormTypes;
 
@@ -13,7 +11,6 @@ let makeInput = question: inputItem => {
 let str = React.string;
 
 module DeleteButton = {
-  open Mixins;
   [@react.component]
   let make = (~onClick) =>
     <button
@@ -59,7 +56,7 @@ let make = () => {
     [|state.form|],
   );
   <div className=formContainer>
-    <form id="form" className=AppStyle.form>
+    <form id="form" className=FormBuilder__Style.form>
       {
         state.form
         |> List.mapi((i, item) =>
@@ -68,7 +65,7 @@ let make = () => {
                <div
                  className=inputContainer key={Js.Float.toString(input.id)}>
                  <InputNumber number={i + 1} />
-                 <div className=AppStyle.input>
+                 <div className=FormBuilder__Style.input>
                    <Input.Text
                      placeholder="Type your question here"
                      onChange=(
@@ -96,7 +93,10 @@ let make = () => {
                  <InputNumber number={i + 1} />
                  <div
                    className={
-                     merge([AppStyle.input, Mixins.flex_col_start_start])
+                     merge([
+                       FormBuilder__Style.input,
+                       Mixins.flex_col_start_start,
+                     ])
                    }
                    key={Js.Float.toString(input.id)}>
                    <Input.Text
@@ -118,7 +118,7 @@ let make = () => {
                        ])
                      }>
                      <Input.Range
-                       min="2"
+                       min="3"
                        max="11"
                        value={Js.Int.toString(rangeValue)}
                        onChange=(
@@ -181,7 +181,7 @@ let make = () => {
         <Button
           icon={() => <Icons.Scale />}
           text="Scale"
-          onClick={_ => dispatch(AddInput(Range(makeInput(""), 6, One)))}
+          onClick={_ => dispatch(AddInput(Range(makeInput(""), 11, One)))}
         />
       </div>
     </div>

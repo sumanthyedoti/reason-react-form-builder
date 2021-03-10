@@ -8,7 +8,12 @@ let no_default_style = style([
   margin(`px(0)),
   padding(`px(0)),
 ])
-
+let flex_start_stretch =
+  style([
+    display(`flex),
+    justifyContent(`flexStart),
+    alignItems(`stretch),
+  ]);
 let flex_start_start =
   style([
     display(`flex),

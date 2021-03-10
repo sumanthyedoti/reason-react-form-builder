@@ -2,6 +2,8 @@ type rangeValue = int;
 type scaleStart =
   | Zero
   | One;
+type id = float;
+type answer = string;
 type inputItem = {
   id: float,
   question: string,
@@ -18,10 +20,11 @@ type inputAction =
   | Delete;
 type action =
   | AddInput(input)
-  | AddText(float, string)
-  | ChangeRange(float, string)
-  | ChangeScaleStart(float, scaleStart)
-  | DeleteInput(float);
+  | AddText(id, string)
+  | ChangeRange(id, string)
+  | ChangeScaleStart(id, scaleStart)
+  | DeleteInput(id)
+  | Answer(id, answer);
 type state = {
   action: inputAction,
   form: list(input),
