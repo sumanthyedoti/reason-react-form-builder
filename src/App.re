@@ -8,7 +8,10 @@ let make = () =>
         Mixins.flex_start_stretch,
         style([
           height(`vh(100.)),
-          media("(max-width: 700px)", [flexDirection(`column)]),
+          media(
+            "(max-width: 780px)",
+            [height(`auto), flexDirection(`column)],
+          ),
         ]),
       ])
     }>

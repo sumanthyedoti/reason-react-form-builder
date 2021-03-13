@@ -8,11 +8,11 @@ let formContainer =
     Mixins.flex_col_between_center,
     style([
       position(`relative),
-      height(`vh(100.)),
       width(`vw(40.)),
+      height(`vh(100.)),
       flexGrow(0.),
       background(`hex(Palette.bgSecondary)),
-      media("(max-width: 700px)", [width(`percent(100.))]),
+      media("(max-width: 780px)", [width(`percent(100.))]),
     ]),
   ]);
 

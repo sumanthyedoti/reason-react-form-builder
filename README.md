@@ -2,7 +2,7 @@
 
 [Live demo](https://reason-react-form-builder.netlify.app/)
 
-This is re-creation of [jsfoo-reasonreact-workshop](https://github.com/protoship/jsfoo-reasonreact-workshop)
+This is re-creation of [https://reason-react-survey.surge.sh](https://reason-react-survey.surge.sh/)
 
 ## Run Project
 

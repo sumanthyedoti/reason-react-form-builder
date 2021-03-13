@@ -9,7 +9,7 @@ let outputContainer =
     height(`vh(100.)),
     color(`hex("fff")),
     backgroundColor(`hex(Palette.bgPrimary)),
-    media("(max-width: 700px)", [width(`percent(100.))]),
+    media("(max-width: 780px)", [width(`percent(100.))]),
   ]);
 let outputFormContainer =
   style([
