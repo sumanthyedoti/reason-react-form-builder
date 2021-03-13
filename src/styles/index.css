@@ -1,6 +1,8 @@
 :root {
   --text-dark: #0e1e3b;
+  --primary_accent: #485d82;
 }
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -10,7 +12,8 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}border-box
+  overflow-y: hidden;
+}
 article,
 aside,
 details,

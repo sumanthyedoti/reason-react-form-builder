@@ -20,7 +20,7 @@ module Question = {
   [@react.component]
   let make = (~text) =>
     <div className={question(~placeholder=text === "")}>
-      {(text === "" ? "Question goes here..." : text) |> str}
+      {(text === "" ? "Question goes here" : text) |> str}
     </div>;
 };
 

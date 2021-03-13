@@ -4,6 +4,7 @@ open Mixins;
 let outputContainer =
   style([
     padding2(~v=`rem(4.), ~h=`rem(5.)),
+    paddingLeft(`rem(6.5)),
     width(`percent(60.)),
     height(`vh(100.)),
     color(`hex("fff")),
@@ -62,7 +63,10 @@ let scaleItem =
         "&:hover, &:focus, &:active",
         [textDecoration(`none), backgroundColor(`hex("eee"))],
       ),
-      selector("&.active", [backgroundColor(`hex(Palette.fgTertiary))]),
+      selector(
+        "&.active",
+        [backgroundColor(`hex(Palette.fgTertiary)), color(whitesmoke)],
+      ),
     ]),
   ]);
 

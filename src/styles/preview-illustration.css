@@ -1,5 +1,12 @@
+.preview-illustration-container {
+  padding: 6rem;
+  height: 100%;
+  @media min-width(700px`) {
+    
+  }
+}
 .preview-illustration {
   height: 100%;
-  background: url("../../assets/form-illustration.svg") no-repeat 40% center;
-  background-size: 65% 65%;
+  background: url("../../assets/illustration.png") no-repeat center center;
+  background-size: contain;
 }
