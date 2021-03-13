@@ -4,7 +4,7 @@ open Mixins;
 open FormTypes;
 
 let makeInput = question: inputItem => {
-  id: Js.Date.now(),
+  id: Utils.randomString(),
   question,
   answer: "",
 };
@@ -63,7 +63,7 @@ let make = () => {
              switch (item) {
              | Text(input) =>
                <div
-                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div className=FormBuilder__Style.input>
                    <Input.Text
@@ -89,7 +89,7 @@ let make = () => {
                </div>
              | Range(input, rangeValue, scaleStart) =>
                <div
-                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div
                    className={
@@ -98,7 +98,7 @@ let make = () => {
                        Mixins.flex_col_start_start,
                      ])
                    }
-                   key={Js.Float.toString(input.id)}>
+                   key={input.id}>
                    <Input.Text
                      placeholder="Type your question here"
                      onChange=(

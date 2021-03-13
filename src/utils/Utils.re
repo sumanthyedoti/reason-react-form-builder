@@ -1,3 +1,5 @@
+[@bs.module "../Js/randomString"] external randomString: unit => string = "default";
+
 let rec listOfRange = (start, end_) =>
   switch (start) {
   | num when num == end_ => [end_]

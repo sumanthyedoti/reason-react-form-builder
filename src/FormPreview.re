@@ -25,7 +25,7 @@ let make = () => {
              switch (item) {
              | Text(input) =>
                <div
-                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div className=question> {input.question |> str} </div>
                  <input
@@ -44,7 +44,7 @@ let make = () => {
                </div>
              | Range(input, rangeValue, scaleStart) =>
                <div
-                 className=inputContainer key={Js.Float.toString(input.id)}>
+                 className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div className=question> {input.question |> str} </div>
                  <div className=scaleContainer>

@@ -2,10 +2,10 @@ type rangeValue = int;
 type scaleStart =
   | Zero
   | One;
-type id = float;
+type id = string;
 type answer = string;
 type inputItem = {
-  id: float,
+  id,
   question: string,
   answer: string,
 };
