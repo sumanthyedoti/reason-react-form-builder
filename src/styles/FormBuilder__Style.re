@@ -55,7 +55,7 @@ let formButtonsContainer = style([position(`absolute), bottom(`zero)]);
 let buttonContainer =
   style([
     width(`percent(100.)),
-    padding2(~v=em(1.2), ~h=em(2.)),
+    padding2(~v=em(1.), ~h=em(2.)),
     borderTop(`px(2), `solid, lightgray),
     margin2(~v=`rem(1.), ~h=`rem(1.)),
   ]);

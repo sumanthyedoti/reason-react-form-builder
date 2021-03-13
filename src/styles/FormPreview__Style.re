@@ -60,15 +60,9 @@ let scaleItem =
       transition(~duration=200, "background-color"),
       selector(
         "&:hover, &:focus, &:active",
-        [
-          textDecoration(`none),
-          backgroundColor(`hex(Palette.fgSecondary_accent)),
-        ],
+        [textDecoration(`none), backgroundColor(`hex("eee"))],
       ),
-      selector(
-        "&.active",
-        [backgroundColor(`hex(Palette.fgSecondary)), color(whitesmoke)],
-      ),
+      selector("&.active", [backgroundColor(`hex(Palette.fgTertiary))]),
     ]),
   ]);
 
