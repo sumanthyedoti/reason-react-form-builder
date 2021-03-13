@@ -11,6 +11,6 @@ let bgSecondary = "FAF8FF"; // #FAF8FF
 
 
 let textWhite = "f5f5f5"; // #f5f5f5
-let textBlack = "333"; //#333
+let textBlack = "0e1e3b"; //#0e1e3b
 
 let danger = "dc3545"; // #dc3545

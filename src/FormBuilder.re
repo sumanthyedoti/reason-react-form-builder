@@ -57,6 +57,7 @@ let make = () => {
   );
   <div className=formContainer>
     <form id="form" className=FormBuilder__Style.form>
+      {List.length(state.form) == 0 ? <EmptyBuilder /> : React.null}
       {
         state.form
         |> List.mapi((i, item) =>
