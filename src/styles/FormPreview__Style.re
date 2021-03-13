@@ -3,16 +3,19 @@ open Mixins;
 
 let outputContainer =
   style([
-    padding2(~v=`rem(6.), ~h=`rem(4.)),
+    padding2(~v=`rem(4.), ~h=`rem(5.)),
     width(`percent(60.)),
+    height(`vh(100.)),
     color(`hex("fff")),
     backgroundColor(`hex(Palette.bgPrimary)),
+    media("(max-width: 700px)", [width(`percent(100.))]),
   ]);
 let outputFormContainer =
   style([
     paddingRight(`rem(1.5)),
     maxHeight(`percent(100.)),
     overflow(`scroll),
+    height(`percent(100.)),
   ]);
 
 let inputContainer =
@@ -20,12 +23,18 @@ let inputContainer =
     flex_col_start_start,
     style([
       flexGrow(0.),
-      marginTop(`em(3.)),
+      marginTop(`em(2.)),
       selector("&:first-child", [marginTop(`em(0.))]),
     ]),
   ]);
 
-let question = style([fontSize(`rem(2.6)), width(`percent(100.))]);
+let question = (~placeholder=false) =>
+  style([
+    fontSize(`rem(2.6)),
+    width(`percent(100.)),
+    marginTop(`em(0.5)),
+    color(placeholder ? `hex("888") : `hex(Palette.textWhite)),
+  ]);
 let scaleContainer =
   merge([
     flex_start_start,
@@ -53,15 +62,12 @@ let scaleItem =
         "&:hover, &:focus, &:active",
         [
           textDecoration(`none),
-          backgroundColor(`hex(Palette.fgPrimary_accent)),
+          backgroundColor(`hex(Palette.fgSecondary_accent)),
         ],
       ),
       selector(
         "&.active",
-        [
-          backgroundColor(`hex(Palette.fgPrimary_hover)),
-          color(whitesmoke),
-        ],
+        [backgroundColor(`hex(Palette.fgSecondary)), color(whitesmoke)],
       ),
     ]),
   ]);

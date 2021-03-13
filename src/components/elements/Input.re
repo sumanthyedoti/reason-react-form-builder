@@ -4,7 +4,7 @@ module Styles = {
     style([
       padding2(~v=em(0.4), ~h=em(1.)),
       border(px(0), `none, transparent),
-      borderBottom(px(1), `solid, hex("aaa")), //#aaa
+      borderBottom(px(1), `solid, hex("bbb")), //#aaa
       backgroundColor(transparent),
       fontWeight(`medium),
       fontSize(`rem(1.8)),

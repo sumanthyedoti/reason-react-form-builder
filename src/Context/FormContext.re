@@ -2,10 +2,7 @@ open FormTypes;
 
 let initialState = {
   action: None,
-  form: [
-    Text({id: "123123", question: "something", answer: ""}),
-    Range({id: "12312", question: "something", answer: ""}, 10, Zero),
-  ],
+  form: [],
 };
 
 type dispatch = action => unit;

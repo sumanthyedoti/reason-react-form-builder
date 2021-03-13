@@ -5,7 +5,7 @@ open FormTypes;
 
 let makeInput = question: inputItem => {
   id: Utils.randomString(),
-  question,
+  question: "",
   answer: "",
 };
 let str = React.string;
@@ -62,12 +62,11 @@ let make = () => {
         |> List.mapi((i, item) =>
              switch (item) {
              | Text(input) =>
-               <div
-                 className=inputContainer key={input.id}>
+               <div className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div className=FormBuilder__Style.input>
                    <Input.Text
-                     placeholder="Type your question here"
+                     placeholder="Type your question here......"
                      onChange=(
                        event => {
                          let value = ReactEvent.Form.target(event)##value;
@@ -88,8 +87,7 @@ let make = () => {
                  />
                </div>
              | Range(input, rangeValue, scaleStart) =>
-               <div
-                 className=inputContainer key={input.id}>
+               <div className=inputContainer key={input.id}>
                  <InputNumber number={i + 1} />
                  <div
                    className={
@@ -100,7 +98,7 @@ let make = () => {
                    }
                    key={input.id}>
                    <Input.Text
-                     placeholder="Type your question here"
+                     placeholder="Type your question here..."
                      onChange=(
                        event => {
                          let value = ReactEvent.Form.target(event)##value;
@@ -174,14 +172,16 @@ let make = () => {
       <p> {"Choose a question type:" |> str} </p>
       <div className=Mixins.flex_start_center>
         <Button
-          onClick={_ => dispatch(AddInput(Text(makeInput(""))))}
+          onClick={_ => dispatch(AddInput(Text(makeInput())))}
           text="Text"
+          type_=Button.Secondary
           icon={() => <Icons.Text />}
         />
         <Button
           icon={() => <Icons.Scale />}
+          type_=Button.Secondary
           text="Scale"
-          onClick={_ => dispatch(AddInput(Range(makeInput(""), 11, One)))}
+          onClick={_ => dispatch(AddInput(Range(makeInput(), 11, One)))}
         />
       </div>
     </div>

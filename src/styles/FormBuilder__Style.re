@@ -12,6 +12,7 @@ let formContainer =
       width(`vw(40.)),
       flexGrow(0.),
       background(`hex(Palette.bgSecondary)),
+      media("(max-width: 700px)", [width(`percent(100.))]),
     ]),
   ]);
 
@@ -28,7 +29,7 @@ let inputContainer =
     flex_start_center,
     style([
       padding2(~v=`rem(3.), ~h=`rem(1.)),
-      borderBottom(`px(2), `dotted, lightgray),
+      borderBottom(`px(1), `dashed, `hex("ddd")),
       selector("&:last-child", [borderBottom(`px(0), `none, transparent)]),
     ]),
   ]);
